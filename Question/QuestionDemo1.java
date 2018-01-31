@@ -9,9 +9,9 @@ public class QuestionDemo1
    {
       Scanner in = new Scanner(System.in);
 
-      Question q = new Question();
-      q.setText("Who was the inventor of Java?");
-      q.setAnswer("James Gosling");      
+      ChoiceQuestion q = new ChoiceQuestion( "Who was the inventor of Java?" );
+      q.addChoice("James Gosling", true);
+      q.addChoice("Alan Kay", false);
 
       q.display();
       System.out.print("Your answer: ");
