@@ -1,7 +1,12 @@
 /**
    A coin with a monetary value.
 */
-public class Coin
+
+/*
+ * Use the implements reserved word to promise to fulfill the contract of
+ *  implementing the Comparable interface
+ */
+public class Coin implements Comparable
 {
    private double value;
    private String name;
