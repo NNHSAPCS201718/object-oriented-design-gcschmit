@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
-A coin with a monetary value.
+ * A coin with a monetary value.
  */
 /*
  * Use the implements reserved word to specify that this class promises to
  *  implement all the methods declared in the Comparable interface.
  */
-public class Coin implements Comparable
+public class Coin implements Comparable<Coin>
 {
     private double value;
     private String name;
@@ -46,10 +49,8 @@ public class Coin implements Comparable
      * @return a negative integer, zero, or a positive integer if this
      *      coin is less than, equal to, or greater than the specified coin
      */
-    public int compareTo( Object otherObject )
+    public int compareTo( Coin other )
     {
-        Coin other = (Coin)otherObject;
-        
         if( this.value < other.value )
         {
             return -1;
@@ -63,4 +64,32 @@ public class Coin implements Comparable
             return 0;
         }
     }
+    
+    public String toString()
+    {
+        return "name: " + this.name + "; value: " + this.value;
+    }
+    
+    public static void testComparable()
+    {
+        Coin quarter = new Coin( 0.25, "quarter" );
+        Coin dime = new Coin( 0.10, "dime" );
+        Coin nickel = new Coin( 0.05, "nickel" );
+        
+        ArrayList<Coin> list = new ArrayList<Coin>();
+        
+        list.add( quarter );
+        list.add( dime );
+        list.add( nickel );
+        
+        System.out.println( list );
+        
+        Collections.sort( list );
+        
+        System.out.println( list );
+    }
 }
+
+
+
+
