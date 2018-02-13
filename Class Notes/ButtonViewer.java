@@ -13,12 +13,13 @@ import java.awt.event.ActionListener;
  */
 public class ButtonViewer
 {
-    private final int FRAME_WIDTH = 100;
+    private final int FRAME_WIDTH = 400;
     private final int FRAME_HEIGHT = 100;
 
     private JFrame frame;
     private JPanel panel;
-    private JButton button;
+    private JButton buttonA;
+    private JButton buttonB;
     private JLabel label;
 
     /**
@@ -30,8 +31,10 @@ public class ButtonViewer
         this.frame = new JFrame();
         this.panel = new JPanel();
 
-        this.button = new JButton( "Click Me" );
-        this.panel.add( this.button );
+        this.buttonA = new JButton( "A" );
+        this.panel.add( this.buttonA );
+        this.buttonB = new JButton( "B" );
+        this.panel.add( this.buttonB );
 
         this.label = new JLabel( "button was clicked 0 times" );
         this.panel.add( this.label );
@@ -39,10 +42,12 @@ public class ButtonViewer
         this.frame.add( this.panel );
 
         // 2. create listener object
-        ClickListener listener = new ClickListener();
+        ClickListener listenerA = new ClickListener();
+        ClickListener listenerB = new ClickListener();
 
         // 3. register listener object with component that generates events
-        this.button.addActionListener( listener );
+        this.buttonA.addActionListener( listenerA );
+        this.buttonB.addActionListener( listenerB );
 
         // configure the frame and show it
         this.frame.setSize( FRAME_WIDTH, FRAME_HEIGHT );
@@ -61,7 +66,8 @@ public class ButtonViewer
         public void actionPerformed( ActionEvent event )
         {
             clickCount++;
-            label.setText( "Button was clicked " + clickCount + " times" );
+            label.setText( "Button " + event.getActionCommand() +
+                    " was clicked " + clickCount + " times" );
         }
     }
 }
