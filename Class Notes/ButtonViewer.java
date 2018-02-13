@@ -43,10 +43,12 @@ public class ButtonViewer
         this.frame.add( this.panel );
 
         // 2. create listener object
-        ClickListener listener = new ClickListener();
+        ClickListener listenerA = new ClickListener();
+        ClickListener listenerB = new ClickListener();
 
         // 3. register listener object with component that generates events
-        this.button.addActionListener( listener );
+        this.buttonA.addActionListener( listenerA );
+        this.buttonB.addActionListener( listenerB );
 
         // configure the frame and show it
         this.frame.setSize( FRAME_WIDTH, FRAME_HEIGHT );
@@ -66,7 +68,8 @@ public class ButtonViewer
         public void actionPerformed( ActionEvent event )
         {
             clickCount++;
-            label.setText( "button was clicked " + clickCount + " times ");
+            label.setText( "button " + event.getActionCommand() +
+                    " was clicked " + clickCount + " times ");
         }
     }
 }
